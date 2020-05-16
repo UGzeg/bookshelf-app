@@ -31,7 +31,9 @@ class Homepage extends React.Component{
     /// Searchteme gore filter
     if(this.props.searchTerm){
       filteredBooks = filteredBooks.filter((book) => {
-        return book.title.toLowerCase().indexOf(this.props.searchTerm.toLowerCase()) > -1
+        return book.title.toLowerCase().indexOf(this.props.searchTerm.toLowerCase()) > -1 
+        || 
+        book.author.toLowerCase().indexOf(this.props.searchTerm.toLowerCase()) > -1
       })
     }
 
@@ -39,9 +41,9 @@ class Homepage extends React.Component{
     let sortedBooks = [];
     if(this.props.sortTerm){
       sortedBooks = [...filteredBooks].sort((book1, book2) => {
-         console.log(book1, book2, this.props.sortTerm);
-          return parseInt(book2[this.props.sortTerm]) - parseInt(book1[this.props.sortTerm])
-      });
+        console.log(book1, book2, this.props.sortTerm);
+         return parseInt(book2[this.props.sortTerm]) - parseInt(book1[this.props.sortTerm])
+     });
     }else{
       sortedBooks = filteredBooks;
     }
